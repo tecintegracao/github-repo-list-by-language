@@ -1,0 +1,44 @@
+li.repo-item {
+  background: #fff;
+  box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.02);
+  border-radius: 2px;
+  padding: 20px;
+}
+
+li.repo-item:hover {
+  background: #4d26b7;
+}
+
+li.repo-item:hover strong {
+  color: #fff;
+}
+li.repo-item:hover span {
+  color: #fff;
+}
+li.repo-item header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+li.repo-item header img {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%; /*deixa foto redonda*/
+}
+
+li.repo-item header .repo-info {
+  margin-left: 10px;
+}
+
+.repo-info strong {
+  display: block;
+  font-size: 16px;
+  color: #333;
+}
+
+.repo-info span {
+  font-size: 13px;
+  color: #999;
+  margin-top: 2px;
+}
