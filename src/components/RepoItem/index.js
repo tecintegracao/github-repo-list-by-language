@@ -1,11 +1,6 @@
 import React from 'react';
 import './style.css';
-/*
-user photo
-repo name
-stars
-forks
-*/
+
 function RepoItem({ repo }) {
   return (
     <li className='repo-item'>

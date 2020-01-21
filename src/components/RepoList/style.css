@@ -5,24 +5,9 @@ main ul {
   list-style: none;
   margin-top: 20px;
 }
-.overlay {
-  background: rgba(255, 255, 255, 0.5);
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  top: 0;
-}
-.loading {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-}
-.loadingbar {
-  display: inline-block;
-  width: 4px;
-  height: 18px;
-  border-radius: 4px;
+.listContainer {
+  display: block;
+  position: relative;
 }
 @media (max-width: 650px) {
   main ul {
