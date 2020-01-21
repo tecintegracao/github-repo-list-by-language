@@ -7,7 +7,7 @@ function Aside(props) {
   return (
     <aside>
       <strong>
-        Selecione a linguagem à qual deseja listar os respositórios
+        Selecione a linguagem à qual deseja listar os respositórios.
       </strong>
       <SelectLanguages {...props} />
     </aside>

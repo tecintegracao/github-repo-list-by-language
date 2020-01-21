@@ -6,10 +6,10 @@ import './style.css';
 
 import RepoItem from '../RepoItem';
 
-function RepoList({ selectedLanguage }) {
+function RepoList({ selectedLanguage, repositories, setRepositories }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [repositories, setRepositories] = useState([]);
+  const [response, setResponse] = useState({ items: [] });
 
   useEffect(() => {
     let language = selectedLanguage.replace('JavaScript', 'JS');
@@ -18,11 +18,8 @@ function RepoList({ selectedLanguage }) {
       method: 'GET',
       url: `https://api.github.com/search/repositories?q=language:${language}&sort=stars&page=1`
     })
-      .then(response => {
-        response.data.total_count === 0
-          ? setRepositories([])
-          : setRepositories(response.data.items);
-
+      .then(resp => {
+        setResponse(resp.data);
         setLoading(false);
         setError(false);
       })
@@ -30,6 +27,21 @@ function RepoList({ selectedLanguage }) {
         setError(true);
         setLoading(false);
       });
+    /*eslint-disable */
+  }, [selectedLanguage]);
+
+  useEffect(() => {
+    response.total_count === 0
+      ? setRepositories([])
+      : setRepositories(() => {
+          const temp = [...repositories, ...response.items];
+          return DupObjArrRemover(temp);
+        });
+    /*eslint-disable */
+  }, [response]);
+
+  useEffect(() => {
+    setRepositories([]);
   }, [selectedLanguage]);
 
   if (loading) {
@@ -47,7 +59,7 @@ function RepoList({ selectedLanguage }) {
       return (
         <ul>
           {repositories.map(repo => (
-            <RepoItem key={repo.name} repo={repo} />
+            <RepoItem key={repo.id} repo={repo} />
           ))}
         </ul>
       );
